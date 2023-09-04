@@ -19,6 +19,7 @@ app.use(express.urlencoded({ extended: true }));
 const db = require("./app/models");
 const Role = db.role;
 
+// koneksi ke mongo db
 db.mongoose
   .connect(`mongodb://${dbConfig.HOST}:${dbConfig.PORT}/${dbConfig.DB}`, {
     useNewUrlParser: true,
@@ -26,6 +27,7 @@ db.mongoose
   })
   .then(() => {
     console.log("Successfully connect to MongoDB.");
+    // seeding data dummy
     initial();
   })
   .catch(err => {
@@ -35,7 +37,7 @@ db.mongoose
 
 // simple route
 app.get("/", (req, res) => {
-  res.json({ message: "Welcome to bezkoder application." });
+  res.json({ message: "Welcome to tripleten application." });
 });
 
 // routes
@@ -48,6 +50,7 @@ app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
 });
 
+// seeding data
 function initial() {
   Role.estimatedDocumentCount((err, count) => {
     if (!err && count === 0) {

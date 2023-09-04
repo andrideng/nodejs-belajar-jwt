@@ -41,6 +41,14 @@ Integration on same Server/Port:
 ## Project setup
 ```
 npm install
+
+change: app/config/db.config.js
+HOST: "127.0.0.1",
+PORT: 27017,
+DB: "tripleten_db"
+
+change: app/config/auth.config.js
+secret: "kunci-rahasia-tripleten"
 ```
 
 ### Run
